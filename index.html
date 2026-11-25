@@ -10,7 +10,8 @@
 <meta property="og:title" content="卢昱君 · AI 产品与 Agent 设计作品集">
 <meta property="og:description" content="从市场洞察到可信约束：两个自己做出来的 Agent 产品，以及实习与创业经历。">
 <meta property="og:type" content="website">
-<link rel="preload" as="image" href="assets/cafe-brief-canvas-1600.webp" imagesrcset="assets/cafe-brief-canvas-800.webp 800w, assets/cafe-brief-canvas-1600.webp 1600w" imagesizes="(min-width: 60em) 46rem, 100vw" fetchpriority="high">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230F6466'/%3E%3Ctext x='16' y='22.5' font-size='17' font-family='PingFang SC,sans-serif' font-weight='700' fill='%23fff' text-anchor='middle'%3E卢%3C/text%3E%3C/svg%3E">
+<link rel="preload" as="image" href="assets/cafe-brief-review-1600.webp" imagesrcset="assets/cafe-brief-review-800.webp 800w, assets/cafe-brief-review-1600.webp 1600w" imagesizes="(min-width: 60em) 46rem, 100vw" fetchpriority="high">
 <style>
 /* ===== Design tokens ===== */
 :root {
@@ -113,14 +114,24 @@ section[id], article[id] { scroll-margin-top: 4.5rem; }
 .hero .wrap { display: grid; gap: var(--sp-7); grid-template-columns: minmax(0, 1fr); }
 .hero h1 { font-size: var(--fs-hero); line-height: 1.25; font-weight: 700; letter-spacing: -.01em; max-width: 15em; text-wrap: balance; }
 .hero .who { margin-top: var(--sp-5); max-width: var(--measure); color: var(--ink-2); font-size: var(--fs-lg); line-height: 1.7; }
+@media (max-width: 47.99em) {
+  .hero { padding-block: var(--sp-6) var(--sp-6); }
+  .hero .wrap { gap: var(--sp-6); }
+  .hero .who { font-size: var(--fs-md); margin-top: var(--sp-4); }
+  .site-nav a { min-height: 2.75rem; display: inline-flex; align-items: center; padding-inline: var(--sp-2); }
+}
 .hero .contact-line { margin-top: var(--sp-5); display: flex; flex-wrap: wrap; gap: var(--sp-2) var(--sp-5); font-size: var(--fs-sm); color: var(--muted); }
 .hero .contact-line a { color: var(--ink-2); }
 .proof { display: grid; gap: 0; border-top: 2px solid var(--ink); align-self: end; }
-.proof div { display: grid; grid-template-columns: minmax(0, 7.5rem) minmax(0, 1fr); gap: var(--sp-4); align-items: baseline; padding-block: var(--sp-4); border-bottom: 1px solid var(--line); }
+.proof div { display: grid; grid-template-columns: minmax(0, 9rem) minmax(0, 1fr); gap: var(--sp-4); align-items: baseline; padding-block: var(--sp-4); border-bottom: 1px solid var(--line); }
 .proof dt { font-size: 2rem; font-weight: 700; line-height: 1.1; letter-spacing: -.02em; }
-.proof dt small { font-size: var(--fs-md); font-weight: 600; margin-left: .1em; }
+.proof dt small { font-size: var(--fs-md); font-weight: 600; margin-left: .15em; letter-spacing: 0; }
 .proof dd { color: var(--ink-2); font-size: var(--fs-sm); line-height: 1.6; }
 .proof dd span { display: block; color: var(--muted); font-size: var(--fs-xs); }
+@media (max-width: 47.99em) {
+  .proof div { grid-template-columns: minmax(0, 6.75rem) minmax(0, 1fr); gap: var(--sp-3); }
+  .proof dt { font-size: 1.625rem; }
+}
 @media (min-width: 60em) {
   .hero .wrap { grid-template-columns: minmax(0, 7fr) minmax(0, 4fr); align-items: end; }
 }
@@ -154,6 +165,12 @@ section[id], article[id] { scroll-margin-top: 4.5rem; }
 .shot { display: grid; gap: var(--sp-3); }
 .shot a { display: block; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); box-shadow: var(--shadow); background: var(--surface); }
 .shot img { width: 100%; }
+.shot.phone a { max-width: 22rem; margin-inline: auto; width: 100%; }
+.shot.phone figcaption { text-align: center; margin-inline: auto; }
+@media (prefers-color-scheme: dark) {
+  .shot img { filter: brightness(.9) contrast(1.03); transition: filter .2s; }
+  .shot a:hover img, .shot a:focus-visible img { filter: none; }
+}
 .shot figcaption { font-size: var(--fs-xs); color: var(--muted); line-height: 1.6; max-width: 46em; }
 
 /* 五步轨迹：真实顺序，所以用序号 */
@@ -176,18 +193,18 @@ section[id], article[id] { scroll-margin-top: 4.5rem; }
 .step h4 { font-size: var(--fs-md); font-weight: 700; line-height: 1.75rem; }
 .step p { color: var(--ink-2); font-size: var(--fs-md); }
 .step .refs { margin-top: var(--sp-1); font-size: var(--fs-xs); color: var(--muted); }
-.step .refs a { color: var(--muted); }
-.step .refs a + a { margin-left: .6em; }
-.step.guard::before { content: ""; border-radius: var(--radius-sm); border-color: var(--guard); background: var(--guard-soft)
-  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%239A5A06' stroke-width='1.6' stroke-linecap='round'%3E%3Crect x='3.5' y='7' width='9' height='6.5' rx='1.2'/%3E%3Cpath d='M5.5 7V5a2.5 2.5 0 0 1 5 0v2'/%3E%3C/svg%3E") center / .95rem no-repeat; }
-.step.guard h4 { color: var(--guard); }
-.step.guard .body { background: var(--guard-soft); border-radius: var(--radius-sm); padding: var(--sp-2) var(--sp-3); margin-left: calc(-1 * var(--sp-3)); }
+.step .refs a { color: var(--muted); white-space: nowrap; display: inline-block; padding-block: .2rem; }
+.step .refs a + a::before { content: "·"; display: inline-block; margin-inline: .5em; color: var(--muted); text-decoration: none; }
+.step.guard::before { color: var(--guard); border-color: var(--guard); background: var(--guard-soft); }
+.step.guard h4, .step.guard .body { background: var(--guard-soft); padding-inline: var(--sp-4); border-left: 3px solid var(--guard); }
+.step.guard h4 { color: var(--guard); border-radius: 0 var(--radius-sm) 0 0; display: flex; align-items: center; gap: .4em; padding-top: var(--sp-1); line-height: 1.75rem; }
+.step.guard h4::before { content: ""; width: .95rem; height: .95rem; flex: none; background: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23000' stroke-width='1.6' stroke-linecap='round'%3E%3Crect x='3.5' y='7' width='9' height='6.5' rx='1.2'/%3E%3Cpath d='M5.5 7V5a2.5 2.5 0 0 1 5 0v2'/%3E%3C/svg%3E") center / contain no-repeat;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23000' stroke-width='1.6' stroke-linecap='round'%3E%3Crect x='3.5' y='7' width='9' height='6.5' rx='1.2'/%3E%3Cpath d='M5.5 7V5a2.5 2.5 0 0 1 5 0v2'/%3E%3C/svg%3E") center / contain no-repeat; }
+.step.guard .body { border-radius: 0 0 var(--radius-sm) 0; padding-bottom: var(--sp-3); }
 .step.result::before { background: var(--accent); color: var(--paper); }
 .step.result p { color: var(--ink); }
 .step .note { display: block; margin-top: var(--sp-1); font-size: var(--fs-xs); color: var(--muted); }
-@media (prefers-color-scheme: dark) {
-  .step.guard::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23E6A957' stroke-width='1.6' stroke-linecap='round'%3E%3Crect x='3.5' y='7' width='9' height='6.5' rx='1.2'/%3E%3Cpath d='M5.5 7V5a2.5 2.5 0 0 1 5 0v2'/%3E%3C/svg%3E"); }
-}
 .step .body { grid-column: 2; }
 
 @media (min-width: 60em) {
@@ -195,14 +212,9 @@ section[id], article[id] { scroll-margin-top: 4.5rem; }
   .case.has-shot .case-head { grid-column: 1 / -1; }
   .case.has-shot .trace { grid-column: 1; grid-row: 2; }
   .case.has-shot .shot { grid-column: 2; grid-row: 2; position: sticky; top: 5rem; }
-  .case.text-only .trace { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--sp-7); }
-  .case.text-only .step:nth-child(3)::after { display: none; }
-  .case.text-only .trace { grid-auto-flow: column; grid-template-rows: repeat(3, auto); }
+  .case.text-only .trace { max-width: 44rem; }
 }
 
-.extra { display: grid; gap: var(--sp-3); padding: var(--sp-5); margin-top: var(--sp-5); border: 1px dashed var(--line-strong); border-radius: var(--radius); }
-.extra h3 { font-size: var(--fs-lg); }
-.extra p { color: var(--ink-2); max-width: var(--measure); }
 
 /* ===== Experience ===== */
 .job { display: grid; gap: var(--sp-4); grid-template-columns: minmax(0, 1fr); padding-block: var(--sp-6); }
@@ -213,7 +225,7 @@ section[id], article[id] { scroll-margin-top: 4.5rem; }
 .job .lede { color: var(--ink-2); margin-bottom: var(--sp-3); }
 .points { display: grid; gap: var(--sp-3); }
 .points li { color: var(--ink-2); padding-left: 1rem; position: relative; }
-.points li::before { content: ""; position: absolute; left: 0; top: .75em; width: .375rem; height: 1.5px; background: var(--line-strong); }
+.points li::before { content: ""; position: absolute; left: 0; top: .8em; width: .4rem; height: 2px; background: var(--muted); }
 .points b { color: var(--ink); font-weight: 650; }
 @media (min-width: 60em) {
   .job { grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); column-gap: var(--sp-7); }
@@ -223,6 +235,7 @@ section[id], article[id] { scroll-margin-top: 4.5rem; }
 .two { display: grid; gap: var(--sp-6); grid-template-columns: minmax(0, 1fr); }
 @media (min-width: 48em) { .two { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--sp-7); } }
 .two h3 { font-size: var(--fs-lg); margin-bottom: var(--sp-3); }
+.two h3.next { margin-top: var(--sp-5); }
 .two p, .two li { color: var(--ink-2); }
 .two .points { gap: var(--sp-2); }
 
@@ -266,8 +279,8 @@ section[id], article[id] { scroll-margin-top: 4.5rem; }
       </div>
       <dl class="proof" aria-label="关键数字">
         <div><dt>2<small>个</small></dt><dd>独立设计并做出的 Agent 产品<span>Café Brief 已上线，Paper Agent 已开源</span></dd></div>
-        <div><dt>2,174</dt><dd>条有效评论逐条标注归因<span>通义千问实习，由 2,558 条清洗而来</span></dd></div>
-        <div><dt>1,200+</dt><dd>名内测期种子用户<span>UnieWall 留学生社区，带 5 人团队 0→1</span></dd></div>
+        <div><dt>2,174<small>条</small></dt><dd>通义千问有效评论，逐条标注归因<span>AI 产品实习，由 2,558 条清洗而来</span></dd></div>
+        <div><dt>1,200+<small>名</small></dt><dd>UnieWall 内测期种子用户<span>留学生社区创业，带 5 人团队 0→1</span></dd></div>
       </dl>
     </div>
   </section>
@@ -284,24 +297,24 @@ section[id], article[id] { scroll-margin-top: 4.5rem; }
         <div class="case-head">
           <h3 id="cb-title">Café Brief</h3>
           <p class="what">咖啡店新品上架 AI Agent：一张商品照加一句话，出齐各渠道物料</p>
-          <ul class="facts" aria-label="项目信息"><li>独立设计与开发</li><li class="live">已上线</li><li>2026.11</li></ul>
+          <ul class="facts" role="list" aria-label="项目信息"><li>独立设计与开发</li><li class="live">已上线</li><li>2026.11</li></ul>
           <div class="links">
             <a class="btn primary" href="https://luyujun74-creator.github.io/cafe-brief/">在线体验</a>
-            <a class="btn" href="https://github.com/luyujun74-creator/cafe-brief">查看源码</a>
+            <a class="btn" href="https://github.com/luyujun74-creator/cafe-brief" aria-label="查看 Café Brief 源码">查看源码</a>
           </div>
         </div>
-        <ol class="trace">
+        <ol class="trace" role="list">
           <li class="step"><h4>市场洞察</h4><div class="body"><p>美图设计室、稿定设计等 AI 设计工具主要面向电商运营，以“模板改字换图 + AI 场景图”为主。独立咖啡店上新最怕价格、日期出错，而 AI 直接生成的中文常有错字乱码，出错只能整图重做。</p><p class="refs">参考：<a href="https://apps.apple.com/cn/app/id875654777">美图设计室（App Store）</a><a href="https://apps.apple.com/cn/app/id1113276760">稿定设计（App Store）</a></p></div></li>
           <li class="step"><h4>产品定位</h4><div class="body"><p>不做通用设计工具，只做“小店上新”这一个场景：输入 1 张商品照 + 1 句上新备注，一次产出菜单主图、柜台海报、门店横幅、朋友圈和外卖图。</p></div></li>
-          <li class="step"><h4>Agent 设计</h4><div class="body"><p>拆成“信息抽取—商户确认—创意生成—多渠道排版—一句话修改”的工作流。模型先抽取品名、价格、日期和渠道，商户确认后才生成；模型不可用时降级为规则抽取和手填。</p></div></li>
+          <li class="step"><h4>Agent 设计</h4><div class="body"><p>拆成“信息抽取—商户确认—创意生成—多渠道排版—一句话修改”的工作流。模型先抽取品名、价格、日期和渠道，缺失或有歧义先问商户再生成；生成后价格、日期仍标“待确认”，商户逐项确认才能导出。模型不可用时降级为规则抽取和手填。</p></div></li>
           <li class="step guard"><h4>可信约束</h4><div class="body"><p>事实与创意分层：价格、优惠锁在可编辑文字层，AI 只负责画面和文案，营销说法只能来自商户输入。改价改期先预览受影响的物料，手改内容不会被覆盖。</p></div></li>
           <li class="step result"><h4>结果</h4><div class="body"><p>已上线。扣额度与取图分离并加任务锁，防止重复扣费和重复提交；98 项自动化测试全部通过，桌面与手机端经独立评审验收。</p></div></li>
         </ol>
         <figure class="shot">
-          <a href="assets/cafe-brief-canvas-1600.webp" aria-label="查看 Café Brief 截图大图">
-            <img src="assets/cafe-brief-canvas-1600.webp" srcset="assets/cafe-brief-canvas-800.webp 800w, assets/cafe-brief-canvas-1600.webp 1600w" sizes="(min-width: 60em) 46rem, 100vw" width="1600" height="1040" fetchpriority="high" alt="Café Brief 线上版界面：左侧工具栏，中间画布上是由一张冰奶油拿铁照片生成的店内菜单、柜台海报、门店横幅和朋友圈图文，右侧列出生成步骤，以及售价 28 元和上新日期周五两项待确认的核对栏。">
+          <a href="assets/cafe-brief-review-1600.webp" target="_blank" rel="noopener" aria-label="在新标签页查看 Café Brief 截图大图">
+            <img src="assets/cafe-brief-review-1600.webp" srcset="assets/cafe-brief-review-800.webp 800w, assets/cafe-brief-review-1600.webp 1600w" sizes="(min-width: 60em) 46rem, 100vw" width="1600" height="1375" fetchpriority="high" alt="Café Brief 线上版界面：左侧画布上是由一张冰奶油拿铁照片生成的店内菜单、柜台海报、门店横幅和朋友圈图文；右侧“价格与日期核对”卡片列出售价 28 元和上新周五，各带确认按钮，下方提示请先确认售价、上新时间，确认后才能导出，“确认本版并打包”按钮仍不可点。">
           </a>
-          <figcaption>线上版真实截图（2026-11-25）：试用拿铁示例生成 4 件物料，右下角的价格与日期需商户确认后才能导出。</figcaption>
+          <figcaption>线上版真实截图（2026-11-25），点图看大图。试用拿铁示例：示例为“仅限堂食”，自动跳过外卖图，生成 4 件物料；售价和上新日期逐项确认前，打包导出按钮不可用。</figcaption>
         </figure>
       </article>
 
@@ -310,23 +323,23 @@ section[id], article[id] { scroll-margin-top: 4.5rem; }
         <div class="case-head">
           <h3 id="pa-title">Paper Reading Agent</h3>
           <p class="what">证据可追溯的论文阅读 Agent（RAG）：每句结论都能回到原文</p>
-          <ul class="facts" aria-label="项目信息"><li>个人项目</li><li class="live">已开源</li><li>本地运行</li><li>2026</li></ul>
+          <ul class="facts" role="list" aria-label="项目信息"><li>个人项目</li><li class="live">已开源</li><li>本地运行</li><li>2026</li></ul>
           <div class="links">
-            <a class="btn primary" href="https://github.com/luyujun74-creator/paper-reading-agent">查看源码</a>
+            <a class="btn primary" href="https://github.com/luyujun74-creator/paper-reading-agent" aria-label="查看 Paper Reading Agent 源码">查看源码</a>
           </div>
         </div>
-        <ol class="trace">
-          <li class="step"><h4>市场洞察</h4><div class="body"><p>对比 NotebookLM、SciSpace、Elicit：NotebookLM 只答自有资料但不擅长结构化横比，SciSpace 以单篇对话为主，Elicit 的多篇抽取依赖外部论文库。写综述的研究生缺一个“用自己的文献、每句话都能回到原文”的工具。</p><p class="refs">参考：<a href="https://paperguide.ai/blog/scispace-vs-notebooklm/">SciSpace 与 NotebookLM 对比</a><a href="https://fabric.so/comparison/trusted-ai-tools-that-cite-sources-correctly">能正确引用来源的 AI 工具对比</a></p></div></li>
+        <ol class="trace" role="list">
+          <li class="step"><h4>市场洞察</h4><div class="body"><p>对比 NotebookLM、SciSpace、Elicit：NotebookLM 只答自有资料但不擅长结构化横比，SciSpace 以单篇对话为主，Elicit 的多篇抽取依赖外部论文库。写综述的研究生缺一个“用自己的文献、每句话都能回到原文”的工具。</p><p class="refs">对比对象：<a href="https://notebooklm.google/">NotebookLM</a><a href="https://scispace.com/">SciSpace</a><a href="https://elicit.com/">Elicit</a></p></div></li>
           <li class="step"><h4>产品定位</h4><div class="body"><p>把“可溯源”定为第一原则，结论可信比回答流畅更重要；围绕单篇精读和多篇横向对比两个核心任务设计信息架构。</p></div></li>
           <li class="step"><h4>Agent 设计</h4><div class="body"><p>搭建“PDF 结构化解析—混合检索—本地模型生成”的 RAG 链路，每条回答附原文出处、章节和证据片段，并区分“当前论文”与“跨篇”两种检索范围。</p></div></li>
           <li class="step guard"><h4>可信约束</h4><div class="body"><p>证据不足时拒答，事实与推断分开标注；重复论文去重、噪声片段降权，从规则层面压低幻觉和漏引。</p></div></li>
           <li class="step result"><h4>结果</h4><div class="body"><p>点“查看原文”直达证据句并高亮，一键返回原结论；按主题分组管理文献。以硕士论文 19 篇参考文献为真实语料验证，33 项自动检查全部通过。</p></div></li>
         </ol>
         <figure class="shot">
-          <a href="assets/paper-agent-qa-1600.webp" aria-label="查看 Paper Reading Agent 截图大图">
-            <img src="assets/paper-agent-qa-1600.webp" srcset="assets/paper-agent-qa-800.webp 800w, assets/paper-agent-qa-1600.webp 1600w" sizes="(min-width: 60em) 46rem, 100vw" width="1600" height="1387" loading="lazy" decoding="async" alt="Paper Reading Agent 本机界面：左侧按主题分组的文献库，中间是论文原文，右侧问答面板里每句回答后标注证据编号，下方展开的证据 1 显示论文摘要原句。">
+          <a href="assets/paper-agent-evidence-1600.webp" target="_blank" rel="noopener" aria-label="在新标签页查看 Paper Reading Agent 截图大图">
+            <img src="assets/paper-agent-evidence-1600.webp" srcset="assets/paper-agent-evidence-800.webp 800w, assets/paper-agent-evidence-1600.webp 1600w" sizes="(min-width: 60em) 46rem, 100vw" width="1600" height="1276" loading="lazy" decoding="async" alt="Paper Reading Agent 的证据核对页：标题为 GloVe 论文，上方有“返回原结论”按钮；左侧 PDF 跳到第 5 页，提示“已在 PDF 第 5 页标黄”，证据原句以黄色高亮；右侧显示证据 1 所在章节 3.1 及摘录原文。">
           </a>
-          <figcaption>本机运行的真实界面（2026-11-25）：对当前论文提问，回答逐句标注证据编号，展开即可看到对应原文。</figcaption>
+          <figcaption>本机运行的真实界面（2026-11-25），点图看大图。在回答里点“证据 1 · 查看原文”后：PDF 跳到第 5 页并把证据句标黄，右侧是同一段摘录，“返回原结论”回到回答。</figcaption>
         </figure>
       </article>
 
@@ -335,23 +348,23 @@ section[id], article[id] { scroll-margin-top: 4.5rem; }
         <div class="case-head">
           <h3 id="bl-title">B 站动态页信息流优化</h3>
           <p class="what">不动推荐算法，用结构层优化让追更用户更快找到视频</p>
-          <ul class="facts" aria-label="项目信息"><li>产品设计</li><li>独立完成</li><li>2026.03 – 2026.04</li></ul>
+          <ul class="facts" role="list" aria-label="项目信息"><li>产品设计</li><li>独立完成</li><li>2026.03 – 2026.04</li></ul>
           <div class="links">
             <a class="btn primary" href="https://www.figma.com/make/SRAPmRc10TiqUyNzoOQVf6/B%E7%AB%99%E5%8A%A8%E6%80%81%E9%A1%B5%E4%BC%98%E5%8C%96%E8%AE%BE%E8%AE%A1">查看 Figma 原型</a>
           </div>
         </div>
-        <ol class="trace">
+        <ol class="trace" role="list">
           <li class="step"><h4>市场洞察</h4><div class="body"><p>回收 210 份有效问卷、拆解 400 条动态样本：69% 用户难以快速找到想看的视频，但约半数用户同样会看图文日常。再对比 5 款主流信息流产品的布局、卡片信息层级与视频露出方式。</p></div></li>
           <li class="step"><h4>产品定位</h4><div class="body"><p>主要矛盾是单列混排导致信息密度低，而不是推荐算法不准；所以不动算法、不删图文生态，优先做结构层优化。</p></div></li>
           <li class="step"><h4>方案设计</h4><div class="body"><p>默认动态页改为双列瀑布流、卡片信息分级、视频封面提权，单屏视频露出从 1–2 个增至 4–6 个；制定点击热区、间距与返回保位规则，输出 PRD 与原型。</p></div></li>
           <li class="step guard"><h4>可信约束</h4><div class="body"><p>先定验收线再上线：设计曝光、点击、停留、快速返回等埋点，A/B 要求误触与快速返回不高于对照组、满意度 ≥ 3.8/5。</p></div></li>
           <li class="step result"><h4>结果</h4><div class="body"><p>10 人可用性测试中，查找时长下降约 35%，误触率下降约 20%。<span class="note">原型可用性测试数据，非线上 A/B 结果。</span></p></div></li>
         </ol>
-        <figure class="shot">
-          <a href="assets/bili-prototype-1200.webp" aria-label="查看 B 站动态页原型大图">
-            <img src="assets/bili-prototype-1200.webp" srcset="assets/bili-prototype-720.webp 720w, assets/bili-prototype-1200.webp 1200w" sizes="(min-width: 60em) 46rem, 100vw" width="1200" height="1013" loading="lazy" decoding="async" alt="B 站动态页优化后的低保真原型：手机界面为双列瀑布流，视频卡片带时长和大封面，图文动态轻量穿插；右侧列出核心优化点、交互逻辑和问题与方案对照表。">
+        <figure class="shot phone">
+          <a href="assets/bili-phone-830.webp" target="_blank" rel="noopener" aria-label="在新标签页查看 B 站动态页原型大图">
+            <img src="assets/bili-phone-830.webp" srcset="assets/bili-phone-415.webp 415w, assets/bili-phone-830.webp 830w" sizes="22rem" width="830" height="1760" loading="lazy" decoding="async" alt="B 站动态页优化后的低保真手机原型：双列瀑布流，视频卡片带播放量、时长和大封面，粗边框突出；图文动态用细边框轻量穿插在视频之间。">
           </a>
-          <figcaption>低保真原型与设计说明，完整交互见 Figma。</figcaption>
+          <figcaption>优化后动态页低保真原型（双列瀑布流），点图看大图。</figcaption>
         </figure>
       </article>
 
@@ -360,12 +373,12 @@ section[id], article[id] { scroll-margin-top: 4.5rem; }
         <div class="case-head">
           <h3 id="th-title">用户情绪识别中的 AI 能力评估</h3>
           <p class="what">外部知识值不值得加进模型：用对照实验回答，而不是凭感觉</p>
-          <ul class="facts" aria-label="项目信息"><li>硕士毕业设计</li><li>独立完成</li><li>2026.02 – 2026.06</li></ul>
+          <ul class="facts" role="list" aria-label="项目信息"><li>硕士毕业设计</li><li>独立完成</li><li>2026.02 – 2026.06</li></ul>
           <div class="links">
             <a class="btn primary" href="https://github.com/luyujun74-creator/lancaster-sensorimotor-cross-construct">代码与实验记录</a>
           </div>
         </div>
-        <ol class="trace">
+        <ol class="trace" role="list">
           <li class="step"><h4>研究问题</h4><div class="body"><p>外部知识能否稳定提升模型对用户情绪的理解？值不值得为它付出额外计算成本？</p></div></li>
           <li class="step"><h4>研究定位</h4><div class="body"><p>把它当成一次是否上线的取舍来评估：看增益是否稳定、是否抵得过额外成本，而不只看分数高低。</p></div></li>
           <li class="step"><h4>实验设计</h4><div class="body"><p>清洗 1,764 万行公开社区数据，重建 9,038 名用户的历史，知识覆盖率从 87% 提升至 96%；设计“不加知识 / 真实知识 / 打乱知识 / 随机噪声”4 组对照。</p></div></li>
@@ -374,11 +387,6 @@ section[id], article[id] { scroll-margin-top: 4.5rem; }
         </ol>
       </article>
 
-      <aside class="extra" aria-labelledby="amytis-title">
-        <h3 id="amytis-title">附加设计作品：Amytis Flow</h3>
-        <p>面向复杂研究任务的桌面工作区设计：把文件、任务进度和上次停下的位置放回同一个界面，让中断的研究可以接着做。</p>
-        <div class="links"><a class="btn" href="https://www.figma.com/design/LyU1UZ5SG05D1CwvovYOql/Untitled?node-id=0-1">查看 Figma 设计稿</a></div>
-      </aside>
     </div>
   </section>
 
@@ -394,7 +402,7 @@ section[id], article[id] { scroll-margin-top: 4.5rem; }
           <p class="role">AI 产品实习生</p>
           <p class="when">2026.04 – 2026.07</p>
         </div>
-        <ul class="points">
+        <ul class="points" role="list">
           <li><b>竞品评测：</b>设计同设备、同网络、同 Prompt 的控制变量评测，对豆包、DeepSeek、腾讯元宝跑 10 组用例 × 8 个维度（每项取 3 次均值），定位千问首字响应（6.21s，最快竞品 1.38s）与复杂指令遵循两处短板。</li>
           <li><b>差评归因：</b>将近 90 天 2,558 条评论清洗为 2,174 条有效样本，建立三层差评分类并逐条标注；发现差评第一来源是付费与运营（28.3%），而不是模型回答质量，修正了立项时的初始假设。</li>
           <li><b>问题拆解：</b>按用户损失收敛出 5 个高优问题并划分 P0–P2；把活动权益链路拆成“发券—到账—展示—跳转—核销—失效—申诉”7 个节点，定位到跨业务状态口径不一致的根因。</li>
@@ -410,7 +418,7 @@ section[id], article[id] { scroll-margin-top: 4.5rem; }
         </div>
         <div>
           <p class="lede">面向在英留学生的认证社区，解决信息分散、二手与租房信任成本高的问题；带 5 人团队从 0 到 1 上线。</p>
-          <ul class="points">
+          <ul class="points" role="list">
             <li><b>定位与规划：</b>对比小红书与微信群，确立“学生认证社区 + 校园大使增长 + 置顶 / VIP 变现”模式；主笔 14 章商业计划书，制定 12 个月里程碑及增长、内容、留存、变现、安全五类指标。</li>
             <li><b>认证与风控：</b>设计 offer / 学生证 / 学校邮箱分级认证，按 UK GDPR 最小化采集、不留存证件原图；浏览和普通发帖免验证，二手交易、租房发布等高风险操作才触发核验。</li>
             <li><b>版本与优先级：</b>主导 V1.1.0 上线审核、发帖、分类、评论与 @ 提醒的社区闭环；按“合规安全 &gt; 首屏体验 &gt; 留存变现 &gt; 体验增强”排出 P0–P3，制定 V1.1–V1.3 八周路线，每项写明目标与验收标准。</li>
@@ -427,7 +435,7 @@ section[id], article[id] { scroll-margin-top: 4.5rem; }
           <p class="role">用户运营</p>
           <p class="when">2024.06 – 2024.09</p>
         </div>
-        <ul class="points">
+        <ul class="points" role="list">
           <li><b>出题与用例：</b>参与 C++ 编程课出题，编写学生代码的测试用例，并将题目上传至题库，支撑课后练习与作业判题。</li>
           <li><b>反馈归因：</b>汇总 300+ 条学生高频问题与作业错误，以“能否对应到具体课件修改”为颗粒度建立分类，产出“问题—原因—优化”对照表。</li>
           <li><b>内容迭代：</b>协同教研推动 20+ 个课时内容与提示迭代，目标章节完课率与作业正确率提升约 15%（教研组统计）。</li>
@@ -444,7 +452,7 @@ section[id], article[id] { scroll-margin-top: 4.5rem; }
       <div class="two">
         <div>
           <h3>能力</h3>
-          <ul class="points">
+          <ul class="points" role="list">
             <li><b>产品：</b>用户调研、竞品分析、需求拆解、PRD、原型设计（Figma）、优先级与版本规划、可用性测试、埋点与 A/B 测试。</li>
             <li><b>数据与 AI：</b>Python、SQL、Pandas；熟悉大模型评测、Prompt、RAG、Agent 的适用边界，能设计评测集、对照实验与指标口径（Precision / Recall / F1）。</li>
             <li><b>动手：</b>能借助 AI 编程工具独立设计并做出可上线的 Agent 产品。</li>
@@ -452,12 +460,12 @@ section[id], article[id] { scroll-margin-top: 4.5rem; }
         </div>
         <div>
           <h3>教育</h3>
-          <ul class="points">
+          <ul class="points" role="list">
             <li><b>伦敦玛丽女王大学（QMUL）</b>　高级计算机科学 硕士（Merit），2025.09 – 2026.09。主修机器学习、数据分析、交互式系统设计、贝叶斯决策与风险分析、半结构化数据工程。</li>
             <li><b>哈尔滨商业大学</b>　计算机科学与技术 本科，2021.09 – 2025.06。</li>
           </ul>
-          <h3 style="margin-top: var(--sp-5)">论文与荣誉</h3>
-          <ul class="points">
+          <h3 class="next">论文、荣誉与校园经历</h3>
+          <ul class="points" role="list">
             <li>Lu, Y. et al. Bridging the green gap: Climate finance pilots and new energy innovation. <i>Finance Research Letters</i>, 2026（SCI，<a href="https://doi.org/10.1016/j.frl.2026.110656">DOI</a>），负责数据处理。</li>
             <li>“挑战杯”大学生课外学术科技作品竞赛校级金奖；大学生数智化企业经营管理沙盘大赛校级二等奖；本科三等奖学金；软件著作权 1 项。</li>
             <li>联想 idea 精英汇项目实践部部长（2021.11 – 2024.09），统筹多场校园纳新与线下产品宣讲。</li>
@@ -472,7 +480,6 @@ section[id], article[id] { scroll-margin-top: 4.5rem; }
       <h2 id="contact-title">联系方式</h2>
       <dl>
         <div><dt>邮箱</dt><dd><a href="mailto:2283205312@qq.com">2283205312@qq.com</a></dd></div>
-        <div><dt>电话</dt><dd><a href="tel:+8615762570681">157 6257 0681</a></dd></div>
         <div><dt>GitHub</dt><dd><a href="https://github.com/luyujun74-creator">github.com/luyujun74-creator</a></dd></div>
       </dl>
     </div>
